@@ -1,0 +1,27 @@
+.main {
+	&-page {
+		background-image: url('../../assets/png/mainBg.png');
+		width: 100%;
+		height: 167px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 23px;
+	}
+
+	&-title {
+		font-size: 24px;
+		color: #692618;
+		max-width: 250px;
+		text-align: center;
+	}
+
+	&-button {
+		font-size: 14px;
+		background-color: #d9d9d9;
+		padding: 0 9px;
+		border-radius: 50px;
+	}
+}
