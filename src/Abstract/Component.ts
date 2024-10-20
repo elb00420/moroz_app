@@ -1,5 +1,5 @@
 export class Component {
-	node: HTMLElement;
+	root: HTMLElement;
 
 	constructor(
 		public parent: HTMLElement,
@@ -9,52 +9,52 @@ export class Component {
 		attrProp?: string[] | null,
 		attrValue?: string[] | null
 	) {
-		this.node = document.createElement(tagName);
+		this.root = document.createElement(tagName);
 
 		if (arrStyles) {
 			arrStyles.forEach((style) => {
-				this.node.classList.add(style);
+				this.root.classList.add(style);
 			});
 		}
 
 		if (content) {
-			this.node.textContent = content;
+			this.root.textContent = content;
 		}
 
 		if (attrProp && attrValue && attrProp.length === attrValue.length) {
 			attrProp.forEach((prop, index) => {
-				this.node.setAttribute(prop, attrValue[index]);
+				this.root.setAttribute(prop, attrValue[index]);
 			});
 		}
 
-		this.myRender();
+		this.render();
 	}
 
-	myRender() {
-		this.parent.append(this.node);
+	render() {
+		this.parent.append(this.root);
 	}
 
-	myRemove() {
-		this.node.remove();
+	remove() {
+		this.root.remove();
 	}
 
 	addClass(className: string) {
-		this.node.classList.add(className);
+		this.root.classList.add(className);
 	}
 
 	removeClass(className: string) {
-		this.node.classList.remove(className);
+		this.root.classList.remove(className);
 	}
 
 	setContent(content: string) {
-		this.node.textContent = content;
+		this.root.textContent = content;
 	}
 
 	setAttribute(name: string, value: string) {
-		this.node.setAttribute(name, value);
+		this.root.setAttribute(name, value);
 	}
 
 	removeAttribute(name: string) {
-		this.node.removeAttribute(name);
+		this.root.removeAttribute(name);
 	}
 }

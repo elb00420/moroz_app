@@ -5,7 +5,7 @@ export class Header extends Component {
 		super(parent, 'header', ['header']);
 
 		const linkLogo = new Component(
-			this.node,
+			this.root,
 			'a',
 			['link-logo'],
 			null,
@@ -13,7 +13,7 @@ export class Header extends Component {
 			['#', '_blank']
 		);
 		new Component(
-			linkLogo.node,
+			linkLogo.root,
 			'img',
 			['logo'],
 			null,
@@ -21,13 +21,13 @@ export class Header extends Component {
 			['./assets/svg/logo.svg', 'Кобриское мороженное']
 		);
 
-		const nav = new Component(this.node, 'nav', ['nav']);
-		const list = new Component(nav.node, 'ul', ['nav-list']);
+		const nav = new Component(this.root, 'nav', ['nav']);
+		const list = new Component(nav.root, 'ul', ['nav-list']);
 
-		const shoppingItem = new Component(list.node, 'li', ['nav-item']);
+		const shoppingItem = new Component(list.root, 'li', ['nav-item']);
 
 		const linkShopping = new Component(
-			shoppingItem.node,
+			shoppingItem.root,
 			'a',
 			['person-link', 'link'],
 			null,
@@ -36,7 +36,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			linkShopping.node,
+			linkShopping.root,
 			'img',
 			['cart-image'],
 			null,
@@ -44,10 +44,10 @@ export class Header extends Component {
 			['./assets/svg/shopping.svg', 'Shopping']
 		);
 
-		const personItem = new Component(list.node, 'li', ['nav-item']);
+		const personItem = new Component(list.root, 'li', ['nav-item']);
 
 		const linkPerson = new Component(
-			personItem.node,
+			personItem.root,
 			'a',
 			['person-link', 'link'],
 			null,
@@ -56,7 +56,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			linkPerson.node,
+			linkPerson.root,
 			'img',
 			['cart-image'],
 			null,
@@ -64,10 +64,10 @@ export class Header extends Component {
 			['./assets/svg/person.svg', 'Person']
 		);
 
-		const heartItem = new Component(list.node, 'li', ['nav-item']);
+		const heartItem = new Component(list.root, 'li', ['nav-item']);
 
 		const linkHeart = new Component(
-			heartItem.node,
+			heartItem.root,
 			'a',
 			['person-link', 'link'],
 			null,
@@ -76,7 +76,7 @@ export class Header extends Component {
 		);
 
 		new Component(
-			linkHeart.node,
+			linkHeart.root,
 			'img',
 			['cart-image'],
 			null,
@@ -85,7 +85,7 @@ export class Header extends Component {
 		);
 
 		const burgerButton = new Component(
-			this.node,
+			this.root,
 			'button',
 			['burger-button'],
 			null,
@@ -93,7 +93,7 @@ export class Header extends Component {
 			['button']
 		);
 		const burgerMenu = new Component(
-			burgerButton.node,
+			burgerButton.root,
 			'img',
 			['burger-menu'],
 			null,

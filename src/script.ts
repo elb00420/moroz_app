@@ -12,9 +12,9 @@ declare global {
 class App {
 	constructor(parent: HTMLElement) {
 		const wrapper = new Component(parent, 'div', ['wrapper']);
-		new Header(wrapper.node);
-		new Mainpage(wrapper.node);
-		new Footer(wrapper.node);
+		new Header(wrapper.root);
+		new Mainpage(wrapper.root);
+		new Footer(wrapper.root);
 	}
 }
 

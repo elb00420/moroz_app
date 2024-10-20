@@ -4,37 +4,37 @@ export class Footer extends Component {
 	constructor(parent: HTMLElement) {
 		super(parent, 'footer', ['footer']);
 
-		new Component(this.node, 'h2', ['footer-title'], 'Наши контакты');
+		new Component(this.root, 'h2', ['footer-title'], 'Наши контакты');
 
-		const blockInf = new Component(this.node, 'div', ['footer__info']);
+		const blockInf = new Component(this.root, 'div', ['footer__info']);
 
-		const ulBlock = new Component(blockInf.node, 'ul', ['footer__list']);
+		const ulBlock = new Component(blockInf.root, 'ul', ['footer__list']);
 
-		const liBlockTwo = new Component(ulBlock.node, 'li', ['footer__item']);
+		const liBlockTwo = new Component(ulBlock.root, 'li', ['footer__item']);
 		new Component(
-			liBlockTwo.node,
+			liBlockTwo.root,
 			'img',
 			['footer__img'],
 			null,
 			['src', 'alt'],
 			['./assets/svg/tel.svg', 'tel']
 		);
-		new Component(liBlockTwo.node, 'p', ['footer__text'], '+375298943081');
+		new Component(liBlockTwo.root, 'p', ['footer__text'], '+375298943081');
 
-		const liBlockOne = new Component(ulBlock.node, 'li', ['footer__item']);
+		const liBlockOne = new Component(ulBlock.root, 'li', ['footer__item']);
 		new Component(
-			liBlockOne.node,
+			liBlockOne.root,
 			'img',
 			['footer__img'],
 			null,
 			['src', 'alt'],
 			['./assets/svg/email.svg', 'email']
 		);
-		new Component(liBlockOne.node, 'p', ['footer__text'], 'kbrmsz@brest.by');
+		new Component(liBlockOne.root, 'p', ['footer__text'], 'kbrmsz@brest.by');
 
-		const liBlockThree = new Component(ulBlock.node, 'li', ['footer__item']);
+		const liBlockThree = new Component(ulBlock.root, 'li', ['footer__item']);
 		new Component(
-			liBlockThree.node,
+			liBlockThree.root,
 			'img',
 			['footer__img'],
 			null,
@@ -42,27 +42,27 @@ export class Footer extends Component {
 			['./assets/svg/maps.svg', 'maps']
 		);
 		new Component(
-			liBlockThree.node,
+			liBlockThree.root,
 			'p',
 			['footer__text'],
 			'г.Кобрин ул.Советская 138'
 		);
 
-		const blockSocial = new Component(this.node, 'div', ['footer__social']);
+		const blockSocial = new Component(this.root, 'div', ['footer__social']);
 
 		new Component(
-			blockSocial.node,
+			blockSocial.root,
 			'h2',
 			['footer__desc'],
 			'Мы в социальных сетях'
 		);
 
-		const socialLinks = new Component(blockSocial.node, 'div', [
+		const socialLinks = new Component(blockSocial.root, 'div', [
 			'footer__links',
 		]);
 
 		const socialLinkTg = new Component(
-			socialLinks.node,
+			socialLinks.root,
 			'a',
 			['footer__link'],
 			null,
@@ -71,7 +71,7 @@ export class Footer extends Component {
 		);
 
 		new Component(
-			socialLinkTg.node,
+			socialLinkTg.root,
 			'img',
 			['footer__imgTwo'],
 			null,
@@ -80,7 +80,7 @@ export class Footer extends Component {
 		);
 
 		const socialLinkInst = new Component(
-			socialLinks.node,
+			socialLinks.root,
 			'a',
 			['footer__link'],
 			null,
@@ -89,7 +89,7 @@ export class Footer extends Component {
 		);
 
 		new Component(
-			socialLinkInst.node,
+			socialLinkInst.root,
 			'img',
 			['footer__imgTwo'],
 			null,
@@ -98,7 +98,7 @@ export class Footer extends Component {
 		);
 
 		const socialLinkVk = new Component(
-			socialLinks.node,
+			socialLinks.root,
 			'a',
 			['footer__link'],
 			null,
@@ -107,7 +107,7 @@ export class Footer extends Component {
 		);
 
 		new Component(
-			socialLinkVk.node,
+			socialLinkVk.root,
 			'img',
 			['footer__imgTwo'],
 			null,
@@ -116,7 +116,7 @@ export class Footer extends Component {
 		);
 
 		const socialLinkTt = new Component(
-			socialLinks.node,
+			socialLinks.root,
 			'a',
 			['footer__link'],
 			null,
@@ -125,7 +125,7 @@ export class Footer extends Component {
 		);
 
 		new Component(
-			socialLinkTt.node,
+			socialLinkTt.root,
 			'img',
 			['footer__imgTwo'],
 			null,
@@ -133,13 +133,13 @@ export class Footer extends Component {
 			['./assets/svg/tt.svg', 'inst']
 		);
 
-		const blockInfUser = new Component(this.node, 'div', ['footer__user']);
+		const blockInfUser = new Component(this.root, 'div', ['footer__user']);
 
-		const blockInfUserLink = new Component(blockInfUser.node, 'div', [
+		const blockInfUserLink = new Component(blockInfUser.root, 'div', [
 			'footer__users',
 		]);
 		new Component(
-			blockInfUserLink.node,
+			blockInfUserLink.root,
 			'a',
 			['footer__link', 'abel'],
 			'GitHub',
@@ -147,18 +147,18 @@ export class Footer extends Component {
 			['https://github.com/elb00420', '_blank']
 		);
 		new Component(
-			blockInfUserLink.node,
+			blockInfUserLink.root,
 			'a',
 			['footer__link', 'abel'],
 			'Figma',
 			['href', 'target'],
 			[
-				'https://www.figma.com/design/C4mcZSTORyFwbqSYAtvzFS/Untitled?node-id=2-2&node-type=frame&t=7UdNCYYU4BKkyYtn-0',
+				'https://www.figma.com/design/C4mcZSTORyFwbqSYAtvzFS/Untitled?root-id=2-2&root-type=frame&t=7UdNCYYU4BKkyYtn-0',
 				'_blank',
 			]
 		);
 		new Component(
-			blockInfUser.node,
+			blockInfUser.root,
 			'p',
 			['footer__text', 'abel'],
 			'Tserashchuk A.S, Elb-4'
