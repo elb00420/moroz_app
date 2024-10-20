@@ -9,8 +9,8 @@ export class Header extends Component {
 			'a',
 			['link-logo'],
 			null,
-			['href', 'target'],
-			['#', '_blank']
+			['href'],
+			['#']
 		);
 		new Component(
 			linkLogo.root,
@@ -32,7 +32,7 @@ export class Header extends Component {
 			['person-link', 'link'],
 			null,
 			['href'],
-			['#']
+			['#shopping']
 		);
 
 		new Component(
@@ -52,7 +52,7 @@ export class Header extends Component {
 			['person-link', 'link'],
 			null,
 			['href'],
-			['#']
+			['#profile']
 		);
 
 		new Component(
@@ -72,7 +72,7 @@ export class Header extends Component {
 			['person-link', 'link'],
 			null,
 			['href'],
-			['#']
+			['#favorite']
 		);
 
 		new Component(
