@@ -1,8 +1,9 @@
 import { Component } from '../Abstract/Component';
+import { LogicService } from '../Services/LogicService';
 
 export class Shopping extends Component {
 	stateUpdate: boolean = false;
-	constructor(parent: HTMLElement) {
+	constructor(parent: HTMLElement, private service: LogicService) {
 		super(parent, 'div', ['main-page']);
 
 		new Component(

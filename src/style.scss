@@ -1,4 +1,6 @@
-@import './sass/base/normalize';
-@import './sass/layout/header';
-@import './sass/layout/mainpage';
-@import './sass/layout/footer';
+@use './sass/base/normalize';
+@use './sass/layout/header';
+@use './sass/layout/mainpage';
+@use './sass/layout/footer';
+@use './sass/base/button';
+@use './sass/layout/catalog';

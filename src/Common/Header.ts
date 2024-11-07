@@ -1,7 +1,8 @@
 import { Component } from '../Abstract/Component';
+import { LogicService } from '../Services/LogicService';
 
 export class Header extends Component {
-	constructor(parent: HTMLElement) {
+	constructor(parent: HTMLElement, private service: LogicService) {
 		super(parent, 'header', ['header']);
 
 		const linkLogo = new Component(

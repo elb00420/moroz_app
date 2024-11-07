@@ -1,0 +1,28 @@
+.criteria__button {
+	background-color: #d9d9d9;
+	font-size: 11px;
+	padding: 4px 4px;
+	transition: 0.4s all;
+}
+
+._active {
+	background: #a45455;
+	color: #ffffff;
+}
+
+.slider {
+	&__button {
+		position: absolute;
+		top: 40%;
+		font-size: 48px;
+		cursor: pointer;
+		color: #a45455;
+
+		&--left {
+			left: 5px;
+		}
+		&--right {
+			right: 5px;
+		}
+	}
+}
