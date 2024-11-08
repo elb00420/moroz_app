@@ -32,7 +32,7 @@ class App {
 			'#favorite': new Favorite(main.root, logicService),
 		};
 
-		new Router(links);
+		new Router(links, logicService);
 
 		new Footer(wrapper.root);
 	}

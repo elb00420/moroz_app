@@ -1,7 +1,11 @@
 import { Page } from '../Abstract/Interfaces';
+import { LogicService } from '../Services/LogicService';
 
 export class Router {
-	constructor(public links: Record<string, Page>) {
+	constructor(
+		public links: Record<string, Page>,
+		private service: LogicService
+	) {
 		window.onhashchange = () => {
 			this.openPage();
 		};
