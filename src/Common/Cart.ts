@@ -25,7 +25,7 @@ export class Cart extends Component {
 			wrapperPrice.root,
 			'p',
 			['cart__price'],
-			this.good.price.toString() + ' byn'
+			this.good.price / 100 + ' byn'
 		);
 		new Component(this.root, 'button', ['cart__button'], 'В корзину');
 	}
