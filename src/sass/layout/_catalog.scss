@@ -28,7 +28,7 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	gap: 15px;
+	gap: 30px;
 	&__wrapperPrice {
 		color: #692618;
 	}
@@ -37,5 +37,9 @@
 		background-color: #d9d9d9;
 		font-size: 14px;
 		padding: 6px;
+	}
+
+	&__title {
+		height: 40px;
 	}
 }

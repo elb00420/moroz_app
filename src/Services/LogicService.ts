@@ -1,8 +1,17 @@
 import { Observer } from '../Abstract/Observer';
 import { DBService } from './DBService';
-import { TGood, TTypeField, TTypeGood, TValueField } from '../Abstract/Types';
+import {
+	TGood,
+	TTypeField,
+	TTypeGood,
+	TValueField,
+	TGoodResponse,
+} from '../Abstract/Types';
 
 export class LogicService extends Observer {
+	goodsDb: TGoodResponse[] | null = null;
+	private currentSortAscending: boolean | null = null;
+
 	constructor(private dbService: DBService) {
 		super();
 	}
@@ -21,12 +30,26 @@ export class LogicService extends Observer {
 				good.valueFields
 			);
 		});
-		this.disptach('updateGoodseOnPage', goods);
+		this.goodsDb = goods;
+
+		if (this.currentSortAscending !== null) {
+			this.sortGoodsByPrice(this.currentSortAscending, false);
+		} else {
+			this.disptach('updateGoodseOnPage', goods);
+		}
 	}
 
 	async updateAllGoods(): Promise<void> {
 		const data = await this.dbService.getAllGoods();
-		this.disptach('updateGoodseOnPage', data.goods);
+		const goods = data.goods;
+		goods.forEach((good) => {
+			(good as TGood)['fields'] = this.joinTypesWithValues(
+				good.typeFields,
+				good.valueFields
+			);
+		});
+		this.goodsDb = goods;
+		this.disptach('updateGoodseOnPage', goods);
 	}
 
 	private joinTypesWithValues(
@@ -39,5 +62,20 @@ export class LogicService extends Observer {
 			goodJson[arrTypes[i][1]] = arrValues[i][1];
 		}
 		return goodJson;
+	}
+
+	sortGoodsByPrice(bool: boolean, updateState: boolean = true): void {
+		if (!this.goodsDb) return;
+
+		if (updateState) {
+			this.currentSortAscending = bool;
+		}
+
+		if (bool) {
+			this.goodsDb.sort((a, b) => a.price - b.price);
+		} else {
+			this.goodsDb.sort((a, b) => b.price - a.price);
+		}
+		this.disptach('updateGoodseOnPage', this.goodsDb);
 	}
 }

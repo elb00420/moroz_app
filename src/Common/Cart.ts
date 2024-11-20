@@ -14,7 +14,7 @@ export class Cart extends Component {
 			['image__cart'],
 			null,
 			['src', 'alt'],
-			['../assets/images.png', 'image']
+			['../assets/item.png', 'image']
 		);
 		new Component(this.root, 'h3', ['cart__title'], this.good.title);
 		const wrapperPrice = new Component(this.root, 'div', [

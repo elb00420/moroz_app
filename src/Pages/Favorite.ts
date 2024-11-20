@@ -1,13 +1,15 @@
 import { Component } from '../Abstract/Component';
 import { LogicService } from '../Services/LogicService';
-import { TGood } from '../Abstract/Types';
+import { TGood, TTypeGood } from '../Abstract/Types';
 import { ButtonTypeGood } from '../Common/ButtonTypeGood';
 import { Cart } from '../Common/Cart';
+import { SelectTypeSort } from '../Common/SelectTypeSort';
 
 export class Favorite extends Component {
 	stateUpdate: boolean = false;
 	divButtons: null | Component = null;
 	divGoods: null | Component = null;
+	divSort: null | Component = null;
 	currentIndex: number = 0;
 	goods: TGood[] = [];
 	constructor(parent: HTMLElement, private service: LogicService) {
@@ -17,6 +19,8 @@ export class Favorite extends Component {
 
 		const divData = new Component(this.root, 'div', ['catalog__wrapperDesc']);
 		this.divButtons = new Component(divData.root, 'div', ['catalog__buttons']);
+		const divLine = new Component(divData.root, 'div', ['catalog__line']);
+		this.divSort = new Component(divLine.root, 'div', ['catalog__sort']);
 		this.divGoods = new Component(divData.root, 'div', ['catalog__goods']);
 
 		const prevButton = new Component(
@@ -48,11 +52,18 @@ export class Favorite extends Component {
 
 	update(): void {
 		this.service.getTypesGoods().then((typesGoods) => {
-			if (Array.isArray(typesGoods)) {
+			if (this.divButtons && this.divSort) {
+				const allGoodsButton: TTypeGood = {
+					id: 0,
+					title: 'Все товары',
+					typeFields: [],
+				};
+				new ButtonTypeGood(this.divButtons.root, this.service, allGoodsButton);
 				typesGoods.forEach((typeGood) => {
 					if (this.divButtons)
 						new ButtonTypeGood(this.divButtons.root, this.service, typeGood);
 				});
+				new SelectTypeSort(this.divSort.root, this.service, typesGoods);
 			}
 			this.service.updateAllGoods();
 		});
