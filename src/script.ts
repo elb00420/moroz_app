@@ -1,4 +1,5 @@
 import { Component } from './Abstract/Component';
+import { DetailsPage } from './Common/DetailsPage';
 import { Footer } from './Common/Footer';
 import { Header } from './Common/Header';
 import { Router } from './Common/Router';
@@ -26,10 +27,11 @@ class App {
 		new Header(wrapper.root, logicService);
 		const main = new Component(wrapper.root, 'main', ['main']);
 		const links = {
-			'': new Mainpage(main.root, logicService),
+			'#': new Mainpage(main.root, logicService),
 			'#profile': new Profile(main.root, logicService),
 			'#shopping': new Shopping(main.root, logicService),
 			'#favorite': new Favorite(main.root, logicService),
+			'#details': new DetailsPage(main.root, logicService),
 		};
 
 		new Router(links, logicService);

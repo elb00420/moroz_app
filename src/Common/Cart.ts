@@ -14,7 +14,13 @@ export class Cart extends Component {
 			['image__cart'],
 			null,
 			['src', 'alt'],
-			['../assets/item.png', 'image']
+			[this.good.photoLink, 'image']
+		);
+		const btnDesc = new Component(
+			this.root,
+			'button',
+			['button__desc', 'abel'],
+			'i'
 		);
 		new Component(this.root, 'h3', ['cart__title'], this.good.title);
 		const wrapperPrice = new Component(this.root, 'div', [
@@ -28,5 +34,9 @@ export class Cart extends Component {
 			this.good.price / 100 + ' byn'
 		);
 		new Component(this.root, 'button', ['cart__button'], 'В корзину');
+
+		btnDesc.root.onclick = () => {
+			service.openPageDetails(good);
+		};
 	}
 }

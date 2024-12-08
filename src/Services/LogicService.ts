@@ -78,4 +78,14 @@ export class LogicService extends Observer {
 		}
 		this.disptach('updateGoodseOnPage', this.goodsDb);
 	}
+
+	openPageDetails(good: TGood): void {
+		this.disptach('updatePageDetails', good);
+		window.location.hash = '#details';
+	}
+
+	openPageCatalog(): void {
+		this.disptach('updateGoodseOnPage');
+		window.location.hash = '#favorite';
+	}
 }
