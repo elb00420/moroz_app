@@ -1,14 +1,15 @@
 import { Component } from '../Abstract/Component';
 import { TGood } from '../Abstract/Types';
 import { LogicService } from '../Services/LogicService';
+import { Slider } from './Slider';
 
 export class DetailsPage extends Component {
 	stateUpdate: boolean = false;
 	private good: TGood | null = null;
 
-	imgItem: Component;
 	h2Name: Component;
 	divProp: Component;
+	slider: Slider;
 	constructor(parent: HTMLElement, private service: LogicService) {
 		super(parent, 'div', ['details__pages', 'abel']);
 		new Component(
@@ -24,7 +25,7 @@ export class DetailsPage extends Component {
 			['details__button__back'],
 			'< - Back'
 		);
-		this.imgItem = new Component(this.root, 'img');
+		this.slider = new Slider(this.root, service);
 		this.h2Name = new Component(this.root, 'h2');
 		this.divProp = new Component(this.root, 'div', ['details__prop']);
 
@@ -46,7 +47,7 @@ export class DetailsPage extends Component {
 
 	update(): void {
 		if (!this.good) return;
-		this.imgItem.root.setAttribute('src', this.good.photoLink);
+		this.slider.setPhoto(this.good);
 		this.h2Name.root.textContent = this.good.title;
 		this.divProp.root.innerHTML = '';
 		this.good.typeFields.forEach((type, num) => {
