@@ -20,7 +20,7 @@ export class Cart extends Component {
 			this.root,
 			'button',
 			['button__desc', 'abel'],
-			'i'
+			'Подроб.'
 		);
 		new Component(this.root, 'h3', ['cart__title'], this.good.title);
 		const wrapperPrice = new Component(this.root, 'div', [
