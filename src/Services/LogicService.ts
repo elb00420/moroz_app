@@ -6,12 +6,13 @@ import {
 	TTypeGood,
 	TValueField,
 	TGoodResponse,
+	TCustomer,
 } from '../Abstract/Types';
 
 export class LogicService extends Observer {
 	goodsDb: TGoodResponse[] | null = null;
 	private currentSortAscending: boolean | null = null;
-
+	userCustomer: TCustomer | null = null;
 	constructor(private dbService: DBService) {
 		super();
 	}
@@ -87,5 +88,58 @@ export class LogicService extends Observer {
 	openPageCatalog(): void {
 		this.disptach('updateGoodseOnPage');
 		window.location.hash = '#favorite';
+	}
+
+	registationCustomer(
+		name: string,
+		email: string,
+		mobile: string,
+		operatorType: string,
+		adress: string
+	): void {
+		this.dbService
+			.registationCustomer(name, email, mobile, operatorType, adress)
+			.then((response) => {
+				if (response) {
+					this.disptach('confirm_registration', response);
+				} else {
+					alert('Сбой регистрации');
+				}
+			});
+	}
+	confirmRegistrationCustomer(customerId: string, code: string): void {
+		this.dbService
+			.confirmRegistrationCustomer(customerId, code)
+			.then((response) => {
+				if (response) {
+					this.disptach('end_registration', response);
+				} else {
+					alert('Сбой регистрации');
+				}
+			});
+	}
+	identificationCustomer(customerId: string): void {
+		this.dbService.identificationCustomer(customerId).then((response) => {
+			if (response) {
+				this.disptach('confirm_identification', response);
+			} else {
+				alert('Сбой авторизации');
+			}
+		});
+	}
+	confirmIdentificationCustomer(customerId: string, code: string): void {
+		this.dbService
+			.confirmIdentificationCustomer(customerId, code)
+			.then((response) => {
+				if (response) {
+					if (response.error.code == 0) this.userCustomer = response.customer;
+					this.disptach('end_identification', response);
+				} else {
+					alert('Сбой авторизации');
+				}
+			});
+	}
+	getUserCustomer(): TCustomer | null {
+		return this.userCustomer;
 	}
 }

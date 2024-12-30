@@ -37,3 +37,30 @@ export type TGoodsResponse = {
 export type TGood = TGoodResponse & {
 	fields: Record<string, string | number | Date>;
 };
+
+export type TCustomer = {
+	id: string;
+	name: string;
+	email: string;
+	operatorType: string;
+	mobile: string;
+	adress: string;
+};
+
+export type TIdentificationResponse = {
+	message: string;
+	customer: TCustomer;
+	error: {
+		message: string;
+		code: number;
+	};
+};
+
+export type TRegistrationResponse = {
+	message: string;
+	customerId: string;
+	error: {
+		message: string;
+		code: number;
+	};
+};

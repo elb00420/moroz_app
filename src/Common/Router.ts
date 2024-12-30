@@ -20,20 +20,65 @@ export class Router {
 
 		const url = window.location.hash.slice(1);
 
-		if (url === 'favorite') {
-			this.links['#favorite'].renderWithUpdate();
-		} else if (url === 'profile') {
-			this.links['#profile'].renderWithUpdate();
-		} else if (url === 'shopping') {
-			this.links['#shopping'].renderWithUpdate();
-		} else if (url === 'details') {
-			if ((this.links['#details'] as DetailsPage).isGoodInDetailsPage()) {
-				this.links['#details'].renderWithUpdate();
-			} else {
-				window.location.hash = '#favorite';
-			}
-		} else {
-			this.links['#'].renderWithUpdate();
+		const isUserCustomer = this.service.getUserCustomer();
+
+		switch (url) {
+			case 'favorite':
+				this.links['#favorite'].renderWithUpdate();
+				break;
+
+			case 'auth':
+				if (!isUserCustomer) {
+					this.links['#auth'].renderWithUpdate();
+				} else {
+					window.location.hash = '#profile';
+				}
+				break;
+
+			case 'profile':
+				if (isUserCustomer) {
+					this.links['#profile'].renderWithUpdate();
+				} else {
+					window.location.hash = '#auth';
+				}
+				break;
+			case 'reg':
+				if (!isUserCustomer) {
+					this.links['#reg'].renderWithUpdate();
+				} else {
+					window.location.hash = '#profile';
+				}
+				break;
+
+			case 'details':
+				if ((this.links['#details'] as DetailsPage).isGoodInDetailsPage()) {
+					this.links['#details'].renderWithUpdate();
+				} else {
+					window.location.hash = '#favorite';
+				}
+				break;
+			case 'shopping':
+				this.links['#shopping'].renderWithUpdate();
+				break;
+			default:
+				this.links['#'].renderWithUpdate();
+				break;
 		}
+
+		// if (url === 'favorite') {
+		// 	this.links['#favorite'].renderWithUpdate();
+		// } else if (url === 'profile') {
+		// 	this.links['#profile'].renderWithUpdate();
+		// } else if (url === 'shopping') {
+		// 	this.links['#shopping'].renderWithUpdate();
+		// } else if (url === 'details') {
+		// 	if ((this.links['#details'] as DetailsPage).isGoodInDetailsPage()) {
+		// 		this.links['#details'].renderWithUpdate();
+		// 	} else {
+		// 		window.location.hash = '#favorite';
+		// 	}
+		// } else {
+		// 	this.links['#'].renderWithUpdate();
+		// }
 	}
 }

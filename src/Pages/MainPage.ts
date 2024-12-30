@@ -8,7 +8,11 @@ export class Mainpage extends Component {
 
 		new Component(this.root, 'h1', ['main-title'], 'Welcome to our store!');
 
-		new Component(this.root, 'button', ['main-button'], 'Вход');
+		const btnAuth = new Component(this.root, 'button', ['main-button'], 'Вход');
+
+		btnAuth.root.onclick = () => {
+			window.location.hash = '#auth';
+		};
 	}
 	renderWithUpdate(): void {
 		if (!this.stateUpdate) {

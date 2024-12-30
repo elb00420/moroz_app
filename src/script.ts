@@ -3,9 +3,11 @@ import { DetailsPage } from './Common/DetailsPage';
 import { Footer } from './Common/Footer';
 import { Header } from './Common/Header';
 import { Router } from './Common/Router';
+import { AuthPage } from './Pages/AuthPage';
 import { Favorite } from './Pages/Favorite';
 import { Mainpage } from './Pages/MainPage';
 import { Profile } from './Pages/Profile';
+import { RegPage } from './Pages/RegPage';
 import { Shopping } from './Pages/Shopping';
 import { DBService } from './Services/DBService';
 import { LogicService } from './Services/LogicService';
@@ -32,6 +34,8 @@ class App {
 			'#shopping': new Shopping(main.root, logicService),
 			'#favorite': new Favorite(main.root, logicService),
 			'#details': new DetailsPage(main.root, logicService),
+			'#auth': new AuthPage(main.root, logicService),
+			'#reg': new RegPage(main.root, logicService),
 		};
 
 		new Router(links, logicService);
