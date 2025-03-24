@@ -1,0 +1,42 @@
+.shopping {
+  &-page {
+    background-color: #989494;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+  }
+
+  &-title {
+    font-size: 28px;
+    color: #4a2c1f;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  &-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+  }
+
+  &-cart {
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &-status {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+  }
+}
