@@ -5,22 +5,23 @@
   flex-direction: column;
   position: relative;
   gap: 15px;
-  &-title {
-    font-size: 28px;
-    text-align: center;
-  }
+}
 
-  &__wrapperDesc {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
+.catalog-title {
+  font-size: 28px;
+  text-align: center;
+}
 
-  &__buttons {
-    display: flex;
-    gap: 4px;
-  }
+.catalog__wrapperDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.catalog__buttons {
+  display: flex;
+  gap: 4px;
 }
 
 .cart {
@@ -29,24 +30,36 @@
   align-items: center;
   text-align: center;
   gap: 30px;
-  &__wrapperPrice {
-    color: #692618;
-  }
+}
 
-  &__button {
-    background-color: #d9d9d9;
-    font-size: 22px;
-    padding: 6px;
-  }
+.cart__wrapperPrice {
+  color: #692618;
+}
 
-  &__title {
-    height: 20px;
-  }
+.cart__button {
+  background-color: #d9d9d9;
+  font-size: 22px;
+  padding: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
 
-  img {
-    width: 246px;
-    height: 173px;
-  }
+.cart__button:hover {
+  background-color: #c0c0c0;
+}
+
+.cart__button:active {
+  background-color: #a0a0a0;
+  transform: scale(0.95);
+}
+
+.cart__title {
+  height: 20px;
+}
+
+.cart img {
+  width: 246px;
+  height: 173px;
 }
 
 .button__desc {

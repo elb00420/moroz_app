@@ -95,10 +95,8 @@ export class Favorite extends Component {
           "Добавить в корзину"
         );
 
-        // Логируем добавление в корзину
         addToCartButton.root.onclick = () => {
-          console.log("Добавление товара в корзину: ", good);
-          this.service.addToCart(good); // Добавляем товар в корзину
+          this.service.addToCart(good);
         };
       }
     }
