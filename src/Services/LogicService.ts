@@ -17,15 +17,14 @@ export class LogicService extends Observer {
 
   constructor(private dbService: DBService) {
     super();
-    // Загружаем корзину из localStorage при инициализации
+
     this.loadCart();
   }
 
-  // Загрузка корзины из localStorage
   loadCart(): void {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
-      this.cart = JSON.parse(cartData); // Загружаем корзину из localStorage
+      this.cart = JSON.parse(cartData);
     }
   }
 

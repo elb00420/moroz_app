@@ -66,6 +66,36 @@ export class Shopping extends Component {
           `Цена: ${this.formatPrice(good.price)} byn.`
         );
 
+        const quantityWrapper = new Component(cartItem.root, "div", [
+          "cart-item-quantity-wrapper",
+        ]);
+        const decreaseButton = new Component(
+          quantityWrapper.root,
+          "button",
+          ["cart-item-quantity-button"],
+          "-"
+        );
+        decreaseButton.root.onclick = () => {
+          this.decreaseQuantity(good.id);
+        };
+
+        const quantityText = new Component(
+          quantityWrapper.root,
+          "span",
+          ["cart-item-quantity"],
+          `${good.count}`
+        );
+
+        const increaseButton = new Component(
+          quantityWrapper.root,
+          "button",
+          ["cart-item-quantity-button"],
+          "+"
+        );
+        increaseButton.root.onclick = () => {
+          this.increaseQuantity(good.id);
+        };
+
         const removeButton = new Component(
           cartItem.root,
           "button",
@@ -76,11 +106,33 @@ export class Shopping extends Component {
           this.removeItemFromCart(good.id);
         };
       });
+
+      // Кнопка "Оформить заказ"
+      const orderButton = new Component(
+        this.root,
+        "button",
+        ["order-button"],
+        "Оформить заказ"
+      );
+      orderButton.root.onclick = () => {
+        // Заглушка для оформления заказа
+        alert("Заказ оформлен");
+      };
     }
   }
 
   removeItemFromCart(goodId: number): void {
     this.service.removeFromCart(goodId);
+    this.updateCart();
+  }
+
+  increaseQuantity(goodId: number): void {
+    this.service.increaseQuantity(goodId);
+    this.updateCart();
+  }
+
+  decreaseQuantity(goodId: number): void {
+    this.service.decreaseQuantity(goodId);
     this.updateCart();
   }
 
