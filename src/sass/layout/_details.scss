@@ -1,37 +1,73 @@
 .details {
-	&__title {
-		text-align: center;
-	}
-	&__pages {
-		background: #86b8e2;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 25px;
-		padding: 15px;
-		position: relative;
+  &__title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
 
-		img {
-			width: 170px;
-			height: 150px;
-		}
+  &__pages {
+    background: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-		h2 {
-			text-align: center;
-		}
-	}
+  &__pages img {
+    width: 300px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
 
-	&__prop {
-		&__title {
-			text-align: center;
-		}
-	}
+  &__pages h2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+  }
 
-	&__button {
-		&__back {
-			position: absolute;
-			left: 2%;
-			top: 13%;
-		}
-	}
+  &__prop {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__prop__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+  }
+
+  &__button {
+    &__back {
+      position: absolute;
+      left: 2%;
+      top: 80px;
+      background-color: #4e9bde;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    &__back:hover {
+      background-color: #347ab7;
+    }
+  }
 }

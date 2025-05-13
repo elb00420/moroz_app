@@ -61,12 +61,40 @@ export class Favorite extends Component {
           typeFields: [],
         };
         new ButtonTypeGood(this.divButtons.root, this.service, allGoodsButton);
-        typesGoods.forEach((typeGood) => {
-          if (this.divButtons)
-            new ButtonTypeGood(this.divButtons.root, this.service, typeGood);
+
+        const eskimo = typesGoods.find(
+          (type) => type.title.toLowerCase() === "эскимо"
+        );
+        const cup = typesGoods.find(
+          (type) => type.title.toLowerCase() === "в стаканчике"
+        );
+
+        const iceCreamFields = [
+          ...(eskimo?.typeFields || []),
+          ...(cup?.typeFields || []),
+        ];
+
+        const iceCream: TTypeGood = {
+          id: -1,
+          title: "Мороженое",
+          typeFields: iceCreamFields,
+        };
+
+        const filteredTypes = typesGoods.filter(
+          (type) =>
+            type.title.toLowerCase() !== "эскимо" &&
+            type.title.toLowerCase() !== "в стаканчике"
+        );
+
+        const finalTypes = [iceCream, ...filteredTypes];
+
+        finalTypes.forEach((typeGood) => {
+          new ButtonTypeGood(this.divButtons!.root, this.service, typeGood);
         });
-        new SelectTypeSort(this.divSort.root, this.service, typesGoods);
+
+        new SelectTypeSort(this.divSort.root, this.service, finalTypes);
       }
+
       this.service.updateAllGoods();
     });
   }

@@ -22,7 +22,11 @@
 
 .catalog__buttons {
   display: flex;
-  gap: 4px;
+  gap: 5px;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-left: 5px;
 }
 
 .cart {
@@ -58,8 +62,15 @@
 }
 
 .cart__title {
-  height: 20px;
   font-weight: bold;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  max-width: 100%;
+  min-height: 2.4em;
+  padding: 0 5px;
 }
 
 .cart img {
@@ -71,7 +82,12 @@
 .button__desc {
   font-style: italic;
   font-size: 16px;
-  position: absolute;
-  right: 88px;
-  top: 58%;
+  position: relative;
+  margin-top: -60px;
+  left: 70px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
 }

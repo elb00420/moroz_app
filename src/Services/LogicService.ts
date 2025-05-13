@@ -17,7 +17,6 @@ export class LogicService extends Observer {
 
   constructor(private dbService: DBService) {
     super();
-
     this.loadCart();
   }
 
@@ -34,24 +33,100 @@ export class LogicService extends Observer {
 
   async getTypesGoods(): Promise<TTypeGood[]> {
     const data = await this.dbService.getTypesGoods();
-    return data.types;
+    const additionalGoods: TTypeGood[] = [
+      {
+        id: 1,
+        title: "Сыры",
+        typeFields: [],
+      },
+      {
+        id: 2,
+        title: "Сметана",
+        typeFields: [],
+      },
+    ];
+    return [...data.types, ...additionalGoods];
   }
 
   async updateGoodsByType(idGood: number): Promise<void> {
-    const data = await this.dbService.getGoodsByType(idGood);
-    const goods = data.goods;
-    goods.forEach((good) => {
-      (good as TGood)["fields"] = this.joinTypesWithValues(
-        good.typeFields,
-        good.valueFields
-      );
-    });
-    this.goodsDb = goods;
-
-    if (this.currentSortAscending !== null) {
-      this.sortGoodsByPrice(this.currentSortAscending, false);
-    } else {
+    if (idGood === 1) {
+      const goods = [
+        {
+          id: 101,
+          title: "Сыр Голландский",
+          price: 420,
+          photoLink: "../../assets/png/golland.png",
+          slider: [],
+          valueFields: [],
+          typeFields: [],
+          fields: {},
+          count: 10,
+          codeCDB: 123,
+          orderDB: 1,
+        },
+        {
+          id: 102,
+          title: "Сыр Чеддер",
+          price: 580,
+          photoLink: "../../assets/png/chedder.png",
+          slider: [],
+          valueFields: [],
+          typeFields: [],
+          fields: {},
+          count: 15,
+          codeCDB: 124,
+          orderDB: 2,
+        },
+      ];
+      this.goodsDb = goods;
       this.disptach("updateGoodseOnPage", goods);
+    } else if (idGood === 2) {
+      const goods = [
+        {
+          id: 201,
+          title: "Сметана 20%",
+          price: 210,
+          photoLink: "../../assets/png/20proc.png",
+          slider: [],
+          valueFields: [],
+          typeFields: [],
+          fields: {},
+          count: 30,
+          codeCDB: 125,
+          orderDB: 3,
+        },
+        {
+          id: 202,
+          title: "Сметана 15%",
+          price: 240,
+          photoLink: "../../assets/png/15proc.png",
+          slider: [],
+          valueFields: [],
+          typeFields: [],
+          fields: {},
+          count: 25,
+          codeCDB: 126,
+          orderDB: 4,
+        },
+      ];
+      this.goodsDb = goods;
+      this.disptach("updateGoodseOnPage", goods);
+    } else {
+      const data = await this.dbService.getGoodsByType(idGood);
+      const goods = data.goods;
+      goods.forEach((good) => {
+        (good as TGood)["fields"] = this.joinTypesWithValues(
+          good.typeFields,
+          good.valueFields
+        );
+      });
+      this.goodsDb = goods;
+
+      if (this.currentSortAscending !== null) {
+        this.sortGoodsByPrice(this.currentSortAscending, false);
+      } else {
+        this.disptach("updateGoodseOnPage", goods);
+      }
     }
   }
 
@@ -109,18 +184,18 @@ export class LogicService extends Observer {
     const existingGood = this.cart.find((item) => item.id === good.id);
 
     if (existingGood) {
-      existingGood.count += 1; // Если товар уже в корзине, увеличиваем его количество
+      existingGood.count += 1;
     } else {
-      // Если товара нет в корзине, добавляем его с количеством 1
       this.cart.push({ ...good, count: 1 });
     }
 
-    this.saveCart(); // Сохраняем корзину в localStorage
-    this.updateCart(); // Обновляем UI корзины
+    this.saveCart();
+    this.updateCart();
   }
+
   removeFromCart(goodId: number): void {
     this.cart = this.cart.filter((good) => good.id !== goodId);
-    this.saveCart(); // Сохраняем корзину после удаления товара
+    this.saveCart();
     this.updateCart();
   }
 
@@ -128,7 +203,7 @@ export class LogicService extends Observer {
     const good = this.cart.find((item) => item.id === goodId);
     if (good) {
       good.count += 1;
-      this.saveCart(); // Сохраняем корзину после увеличения количества
+      this.saveCart();
       this.updateCart();
     }
   }
@@ -137,7 +212,7 @@ export class LogicService extends Observer {
     const good = this.cart.find((item) => item.id === goodId);
     if (good && good.count > 1) {
       good.count -= 1;
-      this.saveCart(); // Сохраняем корзину после уменьшения количества
+      this.saveCart();
       this.updateCart();
     }
   }
@@ -150,7 +225,6 @@ export class LogicService extends Observer {
     this.disptach("updateCart", this.cart);
   }
 
-  // Регистрация и авторизация пользователя
   registationCustomer(
     name: string,
     email: string,

@@ -63,12 +63,19 @@ export class Shopping extends Component {
           cartItem.root,
           "p",
           ["cart-item-price"],
-          `Цена: ${this.formatPrice(good.price)} byn.`
+          `Цена: ${this.formatPrice(good.price * good.count)} byn.`
         );
 
-        const quantityWrapper = new Component(cartItem.root, "div", [
-          "cart-item-quantity-wrapper",
+        const quantityRemoveWrapper = new Component(cartItem.root, "div", [
+          "cart-item-quantity-remove",
         ]);
+
+        const quantityWrapper = new Component(
+          quantityRemoveWrapper.root,
+          "div",
+          ["cart-item-quantity-wrapper"]
+        );
+
         const decreaseButton = new Component(
           quantityWrapper.root,
           "button",
@@ -79,7 +86,7 @@ export class Shopping extends Component {
           this.decreaseQuantity(good.id);
         };
 
-        const quantityText = new Component(
+        new Component(
           quantityWrapper.root,
           "span",
           ["cart-item-quantity"],
@@ -97,7 +104,7 @@ export class Shopping extends Component {
         };
 
         const removeButton = new Component(
-          cartItem.root,
+          quantityRemoveWrapper.root,
           "button",
           ["remove-button"],
           "Удалить"
@@ -107,7 +114,6 @@ export class Shopping extends Component {
         };
       });
 
-      // Кнопка "Оформить заказ"
       const orderButton = new Component(
         this.root,
         "button",
@@ -115,7 +121,6 @@ export class Shopping extends Component {
         "Оформить заказ"
       );
       orderButton.root.onclick = () => {
-        // Заглушка для оформления заказа
         alert("Заказ оформлен");
       };
     }
