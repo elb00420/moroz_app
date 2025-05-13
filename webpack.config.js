@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssPlugin = require("mini-css-extract-plugin");
+
 const devServer = (isDev) =>
   isDev
     ? {
@@ -9,7 +10,7 @@ const devServer = (isDev) =>
           open: true,
           hot: true,
           port: 8080,
-          static: path.join(__dirname, "dist"), // Путь к директории, где будет храниться статический контент
+          static: path.join(__dirname, "dist"),
         },
       }
     : {};
@@ -18,7 +19,7 @@ module.exports = (end, argv) => ({
   mode: argv.mode === "development" ? "development" : "production",
   devtool: argv.mode === "development" ? "inline-source-map" : false,
   ...devServer(argv.mode === "development"),
-  entry: "./src/script.ts", // Ваш основной TS файл
+  entry: "./src/script.ts",
   module: {
     rules: [
       {
@@ -46,23 +47,22 @@ module.exports = (end, argv) => ({
   },
   output: {
     filename: "script.js",
-    path: path.resolve(__dirname, "dist"), // Указываем папку для вывода
+    path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/", // Путь к статическим ресурсам
+    publicPath: "/moroz_app/", // Устанавливаем публичный путь для GitHub Pages (путь к подкаталогу)
   },
   plugins: [
-    // Указываем правильный путь к index.html
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "index.html"), // Путь к файлу index.html в корне
+      template: path.resolve(__dirname, "index.html"),
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "src/assets"), // Путь к папке assets
-          to: "assets", // Куда скопировать
+          from: path.resolve(__dirname, "src/assets"),
+          to: "assets",
         },
         {
-          from: path.resolve(__dirname, "src/404.html"), // Путь к файлу 404.html
+          from: path.resolve(__dirname, "src/404.html"),
           to: "404.html",
         },
       ],
