@@ -1,0 +1,28 @@
+.wrapper {
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+.logo {
+	width: 40px;
+	height: 40px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 15px;
+}
+
+.nav {
+	&-list {
+		display: flex;
+		gap: 30px;
+	}
+}
+
+.cart-image {
+	width: 18px;
+	height: 18px;
+}
