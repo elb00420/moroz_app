@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssPlugin = require("mini-css-extract-plugin");
+
 const devServer = (isDev) =>
   isDev
     ? {
@@ -46,9 +47,9 @@ module.exports = (end, argv) => ({
   },
   output: {
     filename: "script.js",
-    path: path.resolve(__dirname, "dest"),
+    path: path.resolve(__dirname, "dest"), // Собираем в папку dist
     clean: true,
-    publicPath: "/moroz_app/",
+    publicPath: "/moroz_app/", // Путь для GitHub Pages
   },
   plugins: [
     new HtmlWebpackPlugin({ template: "src/index.html" }),

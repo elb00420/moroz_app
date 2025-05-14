@@ -40,7 +40,7 @@ export class Shopping extends Component {
     if (this.goodsInCart.length === 0) {
       const cartImage = new Component(this.root, "img", ["shopping-image"]);
       (cartImage.root as HTMLImageElement).src =
-        "../../assets/png/shopping.png";
+        "/moroz_app/assets/png/shopping.png";
       (cartImage.root as HTMLImageElement).alt = "Корзина";
 
       new Component(this.root, "p", ["cart-empty"], "Корзина пуста");
@@ -55,6 +55,7 @@ export class Shopping extends Component {
         const productImage = new Component(cartItem.root, "img", [
           "cart-item-image",
         ]);
+
         (productImage.root as HTMLImageElement).src = good.photoLink;
         (productImage.root as HTMLImageElement).alt = good.title;
 

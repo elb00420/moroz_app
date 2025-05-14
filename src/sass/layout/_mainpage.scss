@@ -1,27 +1,26 @@
-.main {
-  &-page {
-    background-image: url("../../assets/png/mainBg.png");
-    height: 167px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 23px;
-    background-size: cover;
-  }
+.main-page {
+  background-image: url("/moroz_app/assets/png/mainBg.png"); /* Указываем путь с учетом подкаталога */
+  height: 167px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+  background-size: cover;
+  background-position: center;
+}
 
-  &-title {
-    font-size: 24px;
-    color: #692618;
-    max-width: 250px;
-    text-align: center;
-  }
+.main-title {
+  font-size: 24px;
+  color: #692618;
+  max-width: 250px;
+  text-align: center;
+}
 
-  &-button {
-    font-size: 14px;
-    background-color: #d9d9d9;
-    padding: 0 9px;
-    border-radius: 50px;
-  }
+.main-button {
+  font-size: 14px;
+  background-color: #d9d9d9;
+  padding: 0 9px;
+  border-radius: 50px;
 }
