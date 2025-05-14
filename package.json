@@ -17,7 +17,7 @@
   "private": true,
   "author": "elb00420@g.bstu.by",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "dev": "webpack serve --mode=development",
     "deploy": "firebase deploy"
   }
